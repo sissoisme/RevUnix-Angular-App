@@ -1,0 +1,88 @@
+<div class="container">
+  <h1>
+    ניהול פניות {{ isStatusDone ? 'סגורות' : 'פתוחות' }}<small>({{ support.length }})</small>
+  </h1>
+  <p *ngIf="!support.length">אין פניות שירות</p>
+  <input class='form-control2  left' type="search" [(ngModel)]="searchVal" placeholder="חיפוש" *ngIf="showAddOns" />
+  <table *ngIf="support.length">
+    <thead>
+      <tr>
+        <th>#</th>
+        <th>
+
+          <i (click)="sort(false,1)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,1)" class="fa fa-caret-square-o-down"></i> ID
+        </th>
+        <th>
+          <i (click)="sort(false,2)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,2)" class="fa fa-caret-square-o-down"></i> זמן פתיחת קריאה
+        </th>
+        <th>
+          <i (click)="sort(false,3)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,3)" class="fa fa-caret-square-o-down"></i>שם מלא
+        </th>
+        <th>
+          <i (click)="sort(false,4)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,4)" class="fa fa-caret-square-o-down"></i>אמייל
+        </th>
+        <th>
+          <i (click)="sort(false,5)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,5)" class="fa fa-caret-square-o-down"></i> טלפון
+        </th>
+        <th>
+          <i (click)="sort(false,6)" class="fa fa-caret-square-o-up"></i>
+          <i (click)="sort(true,6)" class="fa fa-caret-square-o-down"></i>תוכן
+        </th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let s of support | search: searchVal; let i = index">
+
+        <td>{{ i + 1 }}</td>
+
+        <td>
+          <input [(ngModel)]="s.id" type="text" *ngIf="s.isEditState" />
+          {{ s.id }}
+        </td>
+
+        <td (dblclick)="this.utility.alert(s.time)">
+          <input [(ngModel)]="s.created_at" type="text" *ngIf="s.isEditState" />
+          {{ s.created_at | date  }}
+        </td>
+
+        <td (dblclick)="this.utility.alert(s.fullName)">
+          <input [(ngModel)]="s.fullName" type="text" *ngIf="s.isEditState" />
+          {{ s.fullName }}
+        </td>
+
+        <td (dblclick)="this.utility.alert(s.email)">
+          <input [(ngModel)]="s.email" type="text" *ngIf="s.isEditState" />
+          {{ s.email }}
+        </td>
+
+        <td (dblclick)="this.utility.alert(s.phone)">
+          <input [(ngModel)]="s.phone" type="text" *ngIf="s.isEditState" />
+          {{ s.phone }}
+        </td>
+
+        <td (dblclick)="this.utility.alert(s.content)">
+          <input [(ngModel)]="s.content" type="text" *ngIf="s.isEditState" />
+          {{ s.content }}
+        </td>
+        <td>
+
+
+          <i class="fa fa-check-square-o" *ngIf="!isStatusDone&&!s.isEditState" (click)="complete(s)"></i>
+          <i class="fa fa-share" *ngIf="isStatusDone&&!s.isEditState" (click)="undo(s)"> </i>
+          <i class="fa fa-close" *ngIf="s.isEditState" (click)="s.isEditState = false"></i>
+          <i class="fa fa-edit" *ngIf="!s.isEditState && this.showAddOns" (click)="s.isEditState = true"></i>
+          <i class=" fa fa-check" *ngIf="s.isEditState" (click)="update(s)"></i>
+          <i class="fa fa-trash" *ngIf="!s.isEditState" (click)="remove(s)"></i>
+
+
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

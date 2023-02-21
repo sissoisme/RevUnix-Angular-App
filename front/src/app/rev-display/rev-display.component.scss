@@ -1,0 +1,458 @@
+.settingDisplay {
+  width: 100%;
+
+  max-height: 20vh;
+
+  background-color: rgb(7, 7, 89);
+  display: flex;
+  padding-bottom: 4vh;
+  border: 2px solid black;
+  border-radius: 0 0 50px 50px;
+  box-shadow: 0 10px 60px black;
+
+  .search {
+    height: 8vw;
+    width: 22%;
+    margin-right: 20px;
+    display: flex;
+    flex-direction: column;
+
+    input {
+      padding: 0 10px;
+      height: 10vw;
+    }
+    #sorter {
+      height: 8vw;
+      width: 80%;
+      border-radius: 12px;
+      border: rgb(255, 252, 100) double 5px;
+      padding: 0;
+      margin: 5px;
+      text-shadow: 1px 1px 1px rgb(0, 0, 0);
+    }
+  }
+  .filsters {
+    width: 80%;
+    height: 10vh;
+    display: flex;
+    font-family: Georgia, "Times New Roman", Times, serif;
+    font-weight: 600;
+    font-size: 1.2em;
+    line-height: 0;
+    button:hover {
+      background-color: rgb(11, 3, 59);
+    }
+
+    .topicFilter {
+      width: 15%;
+      button {
+        width: 10vw;
+      }
+
+      button:hover {
+        background-color: rgb(11, 3, 59);
+      }
+
+      .pill-1 {
+        color: rgb(255, 255, 255);
+        background: rgb(232, 117, 10);
+      }
+    }
+
+    .rateFilter {
+      width: 25%;
+
+      justify-content: center;
+      display: flex;
+      flex-wrap: wrap;
+
+      button {
+        max-width: 8vw;
+        font-size: 0.7em;
+      }
+
+      button:hover {
+        background-color: rgb(11, 3, 59);
+      }
+      .pill-1 {
+        color: rgb(255, 255, 255);
+        background: rgb(232, 117, 10);
+      }
+    }
+
+    .categoryFilter {
+      max-width: 60%;
+      button {
+        max-width: 8vw;
+      }
+      button:hover {
+        background-color: rgb(11, 3, 59);
+      }
+      .pill-1 {
+        color: rgb(255, 255, 255);
+        background: rgb(232, 117, 10);
+      }
+    }
+  }
+}
+
+.resetContainer {
+  background-color: rgba(8, 8, 97, 0);
+  width: 50%;
+  margin: 0 auto;
+  #reset {
+    width: calc(100% - 10px);
+    text-align: center;
+    border-radius: 12px;
+    height: 40px;
+    border: 3px solid black;
+  }
+  #reset:hover {
+    background-color: chocolate;
+  }
+}
+
+#flash {
+  animation: flash 0.7s infinite;
+  z-index: -1 !important;
+  opacity: 0.6;
+  position: relative;
+  border: 0;
+  height: 1rem;
+  width: 95vw;
+  margin: 0 auto;
+  box-shadow: 0px 0px 1px 2px rgb(62, 60, 0);
+  transform: skew(45deg);
+}
+
+.box {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 10px;
+  min-height: 125vh;
+  background-color: rgba(13, 21, 105, 0);
+
+  .card {
+    height: 650px;
+    .myCard-header {
+      background-color: rgb(226, 253, 253);
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      .imgFrame {
+        max-width: 250px;
+        min-width: 180px;
+        float: right;
+        border: 2px black solid;
+        background-color: black;
+        max-height: 200px;
+
+        img {
+          max-width: 146px;
+          height: 90%;
+          margin-top: 5%;
+        }
+      }
+      .myCard-header-center {
+        min-width: 200px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-evenly;
+
+        .tags {
+          color: blueviolet;
+        }
+      }
+
+      .btn-outline-secondary {
+        margin: 0 auto;
+        width: 50%;
+        border-width: 2px;
+        font-size: 1.2rem;
+        font-family: "Times New Roman", Times, serif;
+      }
+    }
+  }
+  .text-center {
+    margin: 30px 30px 30px 0;
+    width: 30vw;
+    min-height: 900px;
+    max-height: 950px;
+    box-shadow: 0 0 5px black;
+    scale: 1;
+
+    .green {
+      background: green;
+    }
+    .yellow {
+      background: yellow;
+    }
+
+    .lightBlue {
+      background-color: skyblue;
+      color: white;
+      text-shadow: 0 0 2px black;
+    }
+  }
+}
+
+.row {
+  background-color: rgba(13, 21, 105, 0);
+  margin-top: 10px;
+}
+
+.form-controlCustom {
+  height: 30px;
+  width: 250px;
+  border-radius: 12px;
+  border: rgb(255, 252, 100) double 5px;
+  padding: 0;
+  margin: 5px;
+  text-shadow: 1px 1px 1px rgb(0, 0, 0);
+}
+
+.oversize {
+  max-height: 200px;
+  border: 2px solid black;
+  overflow-y: scroll;
+  overflow-x: hidden;
+}
+
+.subTitle {
+  text-align: center;
+  font-size: 1.2em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  white-space: pre-wrap;
+}
+.card-header {
+  font-size: 1.4rem;
+  font-weight: 700;
+  font-family: Georgia, "Times New Roman", Times, serif;
+}
+
+.card-text {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+  white-space: pre-wrap;
+}
+
+.accordion-item {
+  background-color: rgb(194, 194, 196);
+}
+
+.zindex {
+  z-index: 0;
+  position: relative;
+}
+
+.inputArea {
+  display: flex;
+  width: 100%;
+
+  label {
+    text-align: right;
+    color: red;
+  }
+
+  input,
+  textarea {
+    width: 100%;
+    border-radius: 12px;
+  }
+}
+
+.accordion-button {
+  background-color: rgb(235, 232, 232);
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 30px;
+  font-size: 14px;
+  color: darkcyan;
+}
+
+.blue {
+  color: blue;
+  font-family: Impact, Haettenschweiler, "Arial Narrow Bold", sans-serif;
+  font-weight: 800;
+  border-radius: 150px;
+  padding: 5px;
+  background-color: white;
+  border: 2px rgb(0, 0, 0) solid;
+  font-size: 16px;
+  position: relative;
+  z-index: 1;
+}
+
+.blue:hover {
+  background-color: rgba(13, 21, 105, 0);
+  color: white;
+}
+
+@keyframes flash {
+  0%,
+  100% {
+    background: -webkit-linear-gradient(left, green, red, yellow, blue);
+  }
+
+  25% {
+    background: -webkit-linear-gradient(left, blue, green, red, yellow);
+  }
+
+  50% {
+    background: -webkit-linear-gradient(left, yellow, blue, green, red);
+  }
+
+  75% {
+    background: -webkit-linear-gradient(left, red, yellow, blue, green);
+  }
+}
+
+.btn-group {
+  z-index: 0;
+}
+
+#likeBtn {
+  width: 90px;
+  height: 90px;
+  border-radius: 50%;
+  font-size: 22px;
+  border: 3px solid black;
+}
+
+.likeFrame {
+  scale: 0.8;
+  width: 100px;
+  height: 100px;
+}
+
+.commentsRow {
+  background-image: -webkit-linear-gradient(
+    left,
+    hsla(0, 0%, 100%, 0.1),
+    hsla(0, 0%, 100%, 0.5),
+    hsla(0, 0%, 100%, 0.9)
+  );
+  border-radius: 30px;
+  width: 95%;
+  margin: 10px auto;
+  min-height: 150px;
+  max-height: 280px;
+  position: relative;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  display: grid;
+  z-index: 80;
+  border: 1px solid black;
+  box-shadow: 0px 0px 10px black;
+  padding: 15px;
+
+  .btm {
+    display: flex;
+    justify-content: space-between;
+    text-decoration: underline;
+  }
+}
+
+.commentBody {
+  font-size: 15px;
+  text-align: right;
+  padding: 5px;
+
+  white-space: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.commentTitle {
+  font-size: 20px;
+  text-align: right;
+  padding: 5px;
+  text-overflow: clip;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.collapseOne {
+  max-height: 700px;
+}
+
+@media (max-width: 550px) {
+  .box {
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr;
+    .text-center {
+      margin: 30px 0 30px 0;
+      width: 99vw;
+    }
+  }
+  .settingDisplay {
+    .search {
+      height: 100px;
+      input{
+        width: 70vw;
+      }
+      #sorter{
+        width: 70vw;
+      }
+    }
+    .filsters {
+      display: none;
+    }
+  }
+}
+
+@media (min-width: 551px) and (max-width: 769px) {
+  .box {
+    margin: 0 auto;
+    text-align: center;
+    display: grid;
+    width: 100vw;
+    grid-template-columns: 1fr;
+
+    .text-center {
+      margin: 30px 0 30px 0;
+      width: 99vw;
+    }
+  }
+  .settingDisplay {
+    display: flex !important;  flex-wrap: wrap;
+    justify-content: space-between;
+    .search {
+      width: 65vw;
+      height: 5vw;
+  flex-wrap: wrap;justify-content: center;
+    }
+
+    .filsters .rateFilter {
+      position: relative;
+      right: 100px;
+      font-size: 0.4em;
+    
+    }
+    .topicFilter {
+      button {
+        width: 20vw !important;
+      }
+
+    }
+    .categoryFilter {
+      position: relative;
+      right: 100px;
+      width: 60vw;
+    
+    }
+  }
+}

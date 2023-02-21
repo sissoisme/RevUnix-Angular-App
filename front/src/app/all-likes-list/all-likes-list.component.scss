@@ -1,0 +1,46 @@
+.reviewList {
+  height: 85%;
+  overflow-y: scroll;
+
+  i {
+    cursor: pointer;
+  }
+
+  table {
+    font-size: 20px;
+    white-space: nowrap;
+    td{
+      border: 1px solid black;
+    }
+
+    th:nth-child(n) {
+      width: calc((100vw) / 4);
+    }
+
+    th:first-child {
+      width: 5vw;
+    }
+
+    th:last-child {
+      width: 30vw;
+    }
+
+    tr {
+      text-align: center;
+    }
+
+    thead {
+      background-color: darkcyan;
+    }
+
+    tbody {
+      overflow-y: scroll;
+    }
+  }
+}
+
+@media (max-width: 550px) {
+  .reviewList {
+  overflow-x: scroll;
+  }
+}

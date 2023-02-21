@@ -1,0 +1,19 @@
+<app-logo></app-logo>
+<h1> ברוך הבא {{utility.user ? utility.user.fullName : 'אורח'}} ! </h1>
+<p *ngIf="!utility.user">
+    <button class="btn btn-primary" type="button" routerLink="login">התחבר</button>
+    <button class="btn btn-primary" type="button" routerLink="register"> הרשם </button>
+</p>
+<p *ngIf="utility.user">
+    <button class="btn btn-primary" (click)="logout()"> התנתק </button>
+</p>
+<app-navbar></app-navbar>
+
+<router-outlet></router-outlet>
+<app-footer></app-footer>
+<app-box-display-reviews></app-box-display-reviews>
+<app-alert></app-alert>
+<div class="loaderFrame" *ngIf="utility.isLoader">
+    <div class="loader"></div>
+  </div>
+

@@ -1,0 +1,56 @@
+
+
+
+.reviewList {
+  height: 85%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  table {
+    font-size: 20px;
+    white-space: nowrap;
+    thead {
+      background-color: darkcyan;
+      tr {
+        text-align: center;
+      }
+      th:nth-child(n) {
+        width: calc((100vw) / 4);
+      }
+      th:first-child {
+        width: 5vw;
+      }
+      th:last-child {
+        width: 30vw;
+      }
+    }
+    tbody {
+      overflow-y: scroll;
+      tr {
+        text-align: center;
+      }
+      td {
+        max-width: 100px;
+        text-overflow: ellipsis;
+        white-space: nowrap;  white-space: nowrap; 
+        max-width: 200px; 
+        border: 1px solid #000000;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        padding: 10px;
+        i {
+          cursor: pointer;
+        }
+      }
+    }
+  }
+  
+}
+
+
+
+
+@media (max-width: 550px) {
+  .reviewList {
+  overflow-x: scroll;
+  }
+}

@@ -1,0 +1,176 @@
+.header {
+  height: 6vh;
+  font-size: 2rem;
+  font-family: Georgia, "Times New Roman", Times, serif;
+  text-align: center;
+  margin: auto;
+  margin-bottom: 30px;
+  text-shadow: 0px 0px 10px white, 1px 1px 1px black;
+  font-weight: 800;
+}
+#carouselExampleControls {
+  width: 48vw;
+  height: 40vh;
+  margin-top: -40px;
+  scale: 0.9;
+
+  .carousel-inner {
+    // min-height: 100px;
+    box-shadow: 0 0 100px black;
+    border: 8px double #343434;
+    border-radius: 50px;
+
+    div div.carousel-item {
+      .text-center:hover .overlay {
+        height: 45%;
+      }
+      .text-center {
+        .green {
+          background-image: -webkit-linear-gradient(left, green, white, green);
+        }
+        .yellow {
+          background-image: -webkit-linear-gradient(
+            left,
+            yellow,
+            white,
+            yellow
+          );
+        }
+        .lightBlue {
+          background-image: -webkit-linear-gradient(
+            left,
+            rgb(32, 67, 196),
+            white,
+            rgb(32, 67, 196)
+          );
+        }
+        .card-header {
+          font-size: 20px;
+          font-weight: 700;
+          .topic {
+            background: radial-gradient(
+                ellipse farthest-corner at right bottom,
+                #fedb37 0%,
+                #fdb931 8%,
+                #9f7928 30%,
+                #8a6e2f 40%,
+                transparent 80%
+              ),
+              radial-gradient(
+                ellipse farthest-corner at left top,
+                #ffffff 0%,
+                #ffffac 8%,
+                #d1b464 25%,
+                #5d4a1f 62.5%,
+                #5d4a1f 100%
+              );
+            border-radius: 500px;
+            padding: 10px;
+            margin: auto;
+            // width: 300px;
+            border: 2px black solid;
+            font-size: 22px;
+            font-family: Impact, Haettenschweiler, "Arial Narrow Bold",
+              sans-serif;
+            letter-spacing: 2px;
+          }
+        }
+        .myCard-header{
+          .imgFrame {
+            img {
+              width: 25vw;
+              margin-top: 5px;
+              height: 45vh;
+              scale: 1;
+            }
+            height: 63vh;
+            border: 1px gray solid;
+            box-shadow: 2px 4px 3px black;
+            background-color: black;
+          }
+        }
+        .overlay {
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          right: 0;
+          background-color: #008bba95;
+          overflow: hidden;
+          width: 100%;
+          height:100px;
+          transition: 0.5s ease;
+          color: white;
+          text-shadow: 1px 1px 1px black;
+          .myCard-header-center {
+            // margin-top: -4vh;
+            
+            .card-title {
+              font-size: 32px;
+              margin: 0;
+            }
+            .card-title2 {
+              font-size: 20px;
+            }
+          }
+
+
+          .categoryBaner {
+            position: relative;
+            top: -10px;
+            font-size: 16px;
+          }
+          .card-body {
+            font-size: 14px;
+            height: 40px;
+            .subTitleBackGround {
+              background-color: #008cba;
+              line-height: 2.4;
+              word-wrap: normal;
+              padding: 10px;
+            }
+            .subTitle {
+              height: 60px;
+              font-size: 16px;
+            }
+            .wraper:hover .overlay {
+              height: 50%;
+            }
+            .wraper {
+              width: 100%;
+              height: 100px;
+              background-color: #008cba;
+            }
+          }
+          .card-footer-frame {
+            display: flex;
+            flex-direction: column;
+            justify-content: stretch;
+            position: relative;
+            top: 20px;
+            width: 100%;
+            bottom: 0;
+            .text-muted {
+              color: rgb(173, 168, 168) !important;
+              text-shadow: 1px 1px 1px black, 1px 1px 5px black;
+            }
+            .card-footer {
+              font-size: 12px;
+              display: flex;
+              justify-content: space-around;
+            }
+          }
+        }
+      }
+    }
+  }
+  .carousel-control-prev-icon,
+  .carousel-control-next-icon {
+    background-color: black;
+    border-radius: 50%;
+    margin-top: 150px;
+    scale: 1;
+  }
+}
+
+
+

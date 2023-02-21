@@ -1,0 +1,205 @@
+<div class="settingDisplay">
+  <div class="search">
+    <input class='form-controlCustom ' type="search" [(ngModel)]="searchVal" placeholder="חיפוש" />
+    <br>
+    <select #sorter name="" id="sorter" (change)="sort()">
+      <option value="0">מיין לפי</option>
+      <option value="1"> א-ת </option>
+      <option value="2">ת-א</option>
+      <option value="3"> מהישן לחדש </option>
+      <option value="4"> מהחדש לישן </option>
+      <option value="5"> דרוג עולה </option>
+      <option value="6"> דרוג יורד</option>
+    </select>
+  </div>
+
+  <div class="filsters">
+    <div class="topicFilter">
+      <button class='form-controlCustom pill-1' (click)="filter('Movies',1)">סרטים</button>
+      <button class='form-controlCustom pill-1' (click)="filter('Books',1)">ספרים</button>
+      <button class='form-controlCustom pill-1' (click)="filter('TV Show / Series',1)">תוכניות טלוויזיה</button>
+    </div>
+
+    <div class="rateFilter">
+      <button class='form-controlCustom pill-1' (click)="filter('⭐',2)">⭐ </button>
+      <button class='form-controlCustom pill-1' (click)="filter('⭐⭐',2)"> ⭐⭐</button>
+      <button class='form-controlCustom pill-1' (click)="filter('⭐⭐⭐',2)"> ⭐⭐⭐</button>
+      <button class='form-controlCustom pill-1' (click)="filter('⭐⭐⭐⭐',2)"> ⭐⭐⭐⭐</button>
+      <button class='form-controlCustom pill-1' (click)="filter('⭐⭐⭐⭐⭐',2)"> ⭐⭐⭐⭐⭐</button>
+    </div>
+
+    <div class="categoryFilter">
+      <button class='form-controlCustom pill-1' (click)="filter('אימה',3)"> אימה</button>
+      <button class='form-controlCustom pill-1' (click)="filter('דרמה',3)"> דרמה</button>
+      <button class='form-controlCustom pill-1' (click)="filter('אנימציה',3)">אנימציה</button>
+      <button class='form-controlCustom pill-1' (click)="filter('מדע בידיוני',3)">מדע בידיוני</button>
+      <button class='form-controlCustom pill-1' (click)="filter('היסטורי',3)">  היסטורי</button>
+      <button class='form-controlCustom pill-1' (click)="filter('מתח',3)"> מתח</button>
+      <button class='form-controlCustom pill-1' (click)="filter('ספורט',3)"> ספורט</button>
+      <button class='form-controlCustom pill-1' (click)="filter('פעולה',3)"> פעולה</button>
+      <button class='form-controlCustom pill-1' (click)="filter('פשע',3)"> פשע</button>
+      <button class='form-controlCustom pill-1' (click)="filter('קומדיה',3)"> קומדיה</button>
+      <button class='form-controlCustom pill-1' (click)="filter('רומנטי',3)"> רומנטי</button>
+      <button class='form-controlCustom pill-1' (click)="filter('תיעודי',3)"> תיעודי</button>
+      <button class='form-controlCustom pill-1' (click)="filter('עיון',3)"> עיון</button>
+      <button class='form-controlCustom pill-1' (click)="filter('ריאלטי',3)"> ריאלטי</button>
+      <button class='form-controlCustom pill-1' (click)="filter('אחר',3)"> אחר</button>
+    </div>
+  </div>
+</div>
+
+<div class="resetContainer">
+  <button class='form-controlCustom' id="reset" (click)="reset()"> איפוס</button>
+</div>
+
+<hr id="flash">
+
+<div class="box">
+  <div *ngFor="let x of products | search: searchVal ;let i = index  " class="item">
+    <div class="card text-center" *ngIf="i<this.productsPerPage " (click)="displayInBox(x)">
+      <div [class.yellow]="x.topic == 'Movies'" [class.green]="x.topic == 'Books'"
+        [class.lightBlue]="x.topic == 'TV Show / Series'" class="card-header">
+        {{ x.topic }}
+      </div>
+      <div class="myCard-header">
+        <div class="imgFrame">
+
+
+          <div *ngIf="x.imgFile">
+            <img [src]="x.imgFile" alt="">
+          </div>
+
+          <img *ngIf="x.imgUrl && !x.imgFile" src={{x.imgUrl}} alt="" />
+          <img *ngIf="!x.imgUrl && !x.imgFile" src='./../../../assets/imgs/defualtImg.jpg' alt="" />
+        </div>
+        <div class="myCard-header-center">
+          <h2 class="card-title">{{ x.title }}</h2>
+
+
+          <h6> {{x.length || x.bookAuthor}} <span *ngIf="x.length"> דקות</span> / {{x.releaseYear}}</h6>
+
+          <h6 *ngIf="x.tvEpisode"> פרק {{x.tvEpisode}} / עונה {{x.tvSeries}} </h6>
+
+          <h6 *ngIf="x.bookAuthor"> {{x.bookPages}} עמודים
+            / הוצאת {{x.bookPublisher}} </h6>
+
+
+
+          <h5>{{ x.rate }}</h5>
+          <h6 class="tags">{{x.tags}}</h6>
+          <span class=" btn btn-outline-secondary btn-sm " >{{x.category}}</span>
+          
+        </div>
+
+        
+      </div>
+      
+      <hr>
+      <div class="card-body">
+
+        <h4 class="subTitle">{{x.subTitle }}</h4>
+        <p class="card-text">
+          {{ x.body }}
+        </p>
+
+      </div>
+
+      <div let class="likeFrame">
+
+        <button type="button" class="btn btn-primary " (click)="checkIfCanSend(likes,x.id)" id="likeBtn">
+          <div>
+
+
+            <i class="fa fa-thumbs-o-up"> {{checkLikes(likes,x.id)}}</i>
+          </div>
+
+        </button>
+
+      </div>
+
+      <div class="card-footer text-muted"> <span class="postTime"> פורסם בתאריך : {{x.publishedTime }} </span>// מאת:
+        {{x.author }}
+
+      </div>
+
+
+      <div class="accordion" id="accordionExample">
+        <div class="accordion-item">
+          <h2 class="accordion-header" id="headingOne">
+            <a class="accordion-button" type="button" (click)="openComments()" data-bs-toggle="collapse" id="btn{{i}}"
+              href="#collapseExample{{i}}" aria-expanded="true" aria-controls="collapseExample">
+
+
+              תגובות
+            </a>
+
+          </h2><button class=" btn btn-outline-dark btn-sm "(click)="addComment(x.id)"> תגובה חדשה </button>
+          <div *ngIf="x.id==this.addCommentfield" class="inputArea">
+            <form [formGroup]="form">
+              <label for="title">כותרת חייבת להיות בין 3-30 תווים</label>
+              <input type="text" placeholder=" הכנס כותרת" formControlName="title" maxlength="30" (click)="stopProp()">
+              <label for="body">תוכן חייב להיות בין 6-80 תווים</label>
+              <textarea type="text" placeholder="הכנס תוכן " formControlName="body" cols="50" rows="3" maxlength="80"
+                (click)="stopProp()"></textarea>
+              <button class="btn btn-primary " (click)="sendComment(x)" [disabled]="!form.valid">הוסף</button>
+            </form>
+          </div>
+          <div class="zindex">
+
+
+            <div id="collapseExample{{i}}" class="accordion-collapse collapse oversize " aria-labelledby="headingOne"
+              data-bs-parent="#accordionExample">
+              <div *ngFor="let f of comments" class="zindex">
+
+                <div *ngIf="f.revId==x.id" class="commentsRow" (click)="stopProp()">
+                  <p class="commentTitle" (dblclick)="this.utility.alert(f.title)"><u>כותרת</u>: {{f.title}}</p>
+                  <p class="commentBody" (dblclick)="this.utility.alert(f.body)"><u>תוכן</u>: {{f.body}}</p>
+                  <div class="btm">
+
+                    <span> מאת:{{f.userName}}</span>
+                    <span> {{f.creatTime}}</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+          </div>
+        </div>
+
+
+      </div>
+
+
+    </div>
+
+  </div>
+
+
+</div>
+
+
+
+<hr id="flash">
+
+<div class="row" id="grpBTN">
+  <div class="col-md-12 d-flex justify-content-center">
+    <div classs="form-inline float-left mr-1">
+      <select class="form-control" [value]=" productsPerPage " (change)="changePageSize($event)">
+
+        <option value="3">3 לעמוד</option>
+        <option value="6">6 לעמוד</option>
+        <option value="9">9 לעמוד</option>
+        <option value="12">12 לעמוד</option>
+        <option value="15">15 לעמוד</option>
+
+
+      </select>
+    </div>
+
+
+    <div class="btn-group flot-right">
+      <button class="btn-group float-right blue " *ngFor="let page of pageNumbers" (click)="changePage(page)"
+        [class.active]="page ==selectedPage">{{page}}</button>
+    </div>
+  </div>
+</div>

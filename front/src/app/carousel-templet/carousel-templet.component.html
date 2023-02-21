@@ -1,0 +1,61 @@
+<h2 class="header">ביקורות אחרונות:</h2>
+<div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner ">
+        <div *ngFor="let x of reviews; let i = index">
+            <div class="carousel-item " [class.active]="i == 0">
+                <div class="card text-center">
+                    <div [class.yellow]="x.topic == 'Movies'" [class.green]="x.topic == 'Books'"
+                        [class.lightBlue]="x.topic == 'TV Show / Series'" class="card-header">
+                        <p class="topic">{{ x.topic }}</p>
+                    </div>
+                    <div class="myCard-header">
+                        <div class="imgFrame">
+                            <img *ngIf="x.imgUrl && x.imgFile" src={{x.imgFile}} alt=""
+                                onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                            <img *ngIf="!x.imgUrl && x.imgFile" src={{x.imgFile}} alt=""
+                                onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                            <img *ngIf="x.imgUrl && !x.imgFile" src={{x.imgUrl}} alt=""
+                                onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                            <img *ngIf="!x.imgUrl && !x.imgFile" src='./../../../assets/imgs/defualtImg.jpg' alt=""
+                                onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                        </div>
+                    </div>
+                    <div class=" overlay">
+                        <br>
+                        <div class="myCard-header-center">
+                            <h2 class="card-title">{{ x.title }}</h2>
+                            <h5 class="card-title2">{{ x.rate }}</h5>
+                        </div>
+
+
+                        <span class="categoryBaner">{{x.category}}</span>
+
+                        <div class="card-body">
+                            <h4 class="subTitle">
+                                <span class="wraper">{{x.subTitle }}</span>
+                            </h4>
+                        </div>
+
+                        <div class="card-footer-frame">
+                            <div class="card-footer text-muted">
+                                <p>/ פורסם ב : - <strong> {{x.publishedTime}} </strong> /</p>
+                                <p>/ מאת: <strong> {{x.author}} </strong> /</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="visually-hidden">Next</span>
+    </button>
+</div>

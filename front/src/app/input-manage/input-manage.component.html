@@ -1,0 +1,233 @@
+<div class="container input-group" [ngSwitch]="review.topic ">
+
+    <header>
+        <h2 *ngSwitchCase="'Movies'">סרט</h2>
+        <h2 *ngSwitchCase="'Books'">ספרים</h2>
+        <h2 *ngSwitchCase="'TV Show / Series'">סדרה \ תוכנית</h2>
+    </header>
+
+    <form *ngIf="form" [formGroup]="form">
+
+        <div class="upper">
+            <div class="left">
+                <label class="form-label">  </label>
+                <div>
+                    <select name="" class="form-select" id="imgByType" #imgTypeElem (change)="imgTypeChose() ">
+                        <option value="">העלאת תמונה מכתובת </option>
+                        <option value="1">העלאת תמונה מקובץ </option>
+                    </select>
+                </div>
+
+
+                <div *ngIf="!this.imgType">
+                    <label class="form-label">כתובת של התמונה:</label>
+                    <input class="form-control" [(ngModel)]="review.imgUrl" type="text"  placeholder="URL:" formControlName="imgUrl" />
+
+                </div>
+                <br>
+
+                <div *ngIf="this.imgType">
+                    <button  class="btn btn-primary btn-lg " (click)="selectImg()"> בחר תמונה <i
+                            class="fa fa-upload"></i>
+                    </button>
+                </div>
+                <br>
+                <div class="imgFrame">
+
+                    <img *ngIf="!this.imgType" [src]="review.imgUrl" alt=""
+                        onerror="src='../../assets/imgs/defualtImg.jpg'">
+                    <img *ngIf="this.imgType" [src]="alternativImg" alt=""
+                        onerror="src='../../assets/imgs/defualtImg.jpg'">
+
+
+                </div>
+
+
+
+                <input #imageInput type="file" name="" id=""  (change)="imageChange()">
+
+            </div>
+            <div class="middle">
+                <div class="field ">
+                    <label class="form-label">*כותרת:</label>
+                
+                    <textarea class="form-control" [(ngModel)]="review.subTitle" name="" id="" cols="100" rows="2" placeholder="*בין 5 ל 300 תווים"
+                        formControlName="subTitle"></textarea>
+                </div>
+
+                <div class="field">
+                    <label class="form-label">*תוכן:</label>
+             
+                    <textarea class="form-control" [(ngModel)]="review.body" name="" id="" cols="110" rows="9" placeholder="*בין 10 ל 900 תווים"
+                        formControlName="body"></textarea>
+                </div>
+
+            </div>
+
+            <div class="right">
+
+                <div class="field ">
+                    <label class="form-label">*נושא:</label>
+                   
+                    <select [(ngModel)]="review.topic" name="" id="" formControlName="topic" class="form-select"
+                        required="true">
+                        <option value="Movies">סרט</option>
+                        <option value="Books">ספר</option>
+                        <option value="TV Show / Series">סדרה \ תוכנית</option>
+                    </select>
+                </div>
+
+                <div class="field ">
+                    <label class="form-label">*קטגוריה:</label>
+                  
+                    <select class="form-select" [(ngModel)]="review.category" required="true" name="" id=""
+                        formControlName="category">
+                        <option value="אימה">אימה</option>
+                        <option value="אנימציה">אנימציה</option>
+                        <option value="דרמה">דרמה</option>
+                        <option value="היסטורי">היסטורי</option>
+                        <option value="מדע בידיוני">מדע בידיוני</option>
+                        <option value="מתח">מתח </option>
+                        <option value="ספורט">ספורט</option>
+                        <option value="פעולה">פעולה</option>
+                        <option value="פשע">פשע</option>
+                        <option value="קומדיה">קומדיה</option>
+                        <option value="רומנטי">רומנטי</option>
+                        <option value="תיעודי">תיעודי</option>
+                        <option *ngSwitchCase="'Books'" value="עיון">עיון</option>
+                        <option *ngSwitchCase="'TV Show / Series'" value="ריאלטי">
+                            ריאלטי
+                        </option>
+                        <option value="אחר">אחר</option>
+                    </select>
+                    
+                </div>
+            
+                <div class="field ">
+                    <label class="form-label" *ngSwitchCase="'Movies'">*שם הסרט:</label>
+                    <label class="form-label" *ngSwitchCase="'Books'">*שם הספר:</label>
+                    <label class="form-label" *ngSwitchCase="'TV Show / Series'">*שם הסדרה \ התוכנית:</label> 
+                  
+                    <input [(ngModel)]="review.title" type="text" required="true" formControlName="title" placeholder="*בין 2 ל -40 תווים"
+                        class="form-control" />
+                         
+                </div>
+                <div class="field">
+                    <label class="form-label">*דרוג:</label>
+                    <select class="form-select" [(ngModel)]="review.rate" required="true" name="" id=""
+                        formControlName="rate">
+                        <option value="⭐">⭐</option>
+                        <option value="⭐⭐">⭐⭐</option>
+                        <option value="⭐⭐⭐">⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐">⭐⭐⭐⭐</option>
+                        <option value="⭐⭐⭐⭐⭐">⭐⭐⭐⭐⭐</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label class="form-label">*שנת הוצאה (4 ספרות):</label>
+                    <app-range [max]="2023" [min]="1900" [(value)]="review.releaseYear"  [(ngModel)]="review.releaseYear"   formControlName="releaseYear" ></app-range>
+                 
+                </div>
+
+                
+            </div>
+        </div>
+        <div class="lower">
+            <div class="left">
+                <div class="field">
+                    <button class="form-control btn-primary btn btn-lg" (click)="send()" [disabled]="!form.valid">
+                        שלח
+                    </button>
+
+                    <button class="form-control btn-primary btn btn-lg" (click)="GoBack()">חזור</button>
+                </div>
+            </div>
+
+
+
+            <div class="middle">
+                <h3>תגיות:</h3>
+                <h6>* ניתן לבחור עד 6 תגיות</h6>
+                <div class="field ">
+                    <div class="item" *ngFor="let tag of tags">
+                        <input  class="tags" type="checkbox" value="{{tag.id}}" (change)="getTags(tag)" [disabled]='this.counter>5 && !tag.check ' />
+                        <label class="form-label"> {{tag.value}}  </label>
+                    </div>
+                    
+                    <input type="text" class="form-control" id="tagsDis" value="" [(ngModel)]="review.tags"
+                        [hidden]="true" formControlName="tags">
+                </div>
+            </div>
+
+
+
+
+
+
+
+
+
+
+            <div class="right">
+                <div *ngSwitchCase="'Movies'" class="field">
+                    <label class="form-label">אורך הסרט (בדקות):</label>
+                    <input class="form-control" [(ngModel)]="review.length" [hidden]="review.topic == 'Books'" placeholder="*מינימום 2 תווים"
+                        type="text" formControlName="length" />
+                </div>
+                <div *ngSwitchCase="'TV Show / Series'" class="field">
+                    <label class="form-label">אורך הפרק (בדקות):</label>
+                    <input class="form-control" [(ngModel)]="review.length" [hidden]="review.topic == 'Books'"placeholder="*מינימום 2 תווים"
+                        type="text" formControlName="length" />
+                </div>
+
+
+
+                <div *ngSwitchCase="'TV Show / Series'" class="field">
+                    <label class="form-label">עונה:</label>
+                    <input class="form-control" [(ngModel)]="review.tvSeries" type="text" formControlName="tvSeries" placeholder="*מינימום 3 תווים" />
+                </div>
+                <div *ngSwitchCase="'TV Show / Series'" class="field">
+                    <label class="form-label">פרק:</label>
+                    <input class="form-control" [(ngModel)]="review.tvEpisode" type="text" placeholder="*מינימום 2 תווים"
+                        formControlName="tvEpisode" />
+                </div>
+                <div *ngSwitchCase="'Books'" class="field">
+                    <label class="form-label">מוציא לאור:</label>
+                    <input class="form-control" [(ngModel)]="review.bookPublisher" type="text" placeholder="*מינימום 20 תווים"
+                        formControlName="bookPublisher" />
+                </div>
+                <div *ngSwitchCase="'Books'" class="field">
+                    <label class="form-label">עומדים:</label>
+                    <input class="form-control" [(ngModel)]="review.bookPages" type="text" placeholder="*מינימום 4 תווים"
+                        formControlName="bookPages" />
+                </div>
+                <div *ngSwitchCase="'Books'" class="field">
+                    <label class="form-label">כותב:</label>
+                    <input class="form-control" [(ngModel)]="review.bookAuthor" type="text" placeholder="*מינימום 20 תווים"
+                        formControlName="bookAuthor" />
+                </div>
+
+            </div>
+        </div>
+    </form>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

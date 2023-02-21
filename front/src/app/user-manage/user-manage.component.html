@@ -1,0 +1,84 @@
+<div class="container">
+    <h1>
+        ניהול משתמשים <small>({{ users.length }})</small>
+    </h1>
+    <p *ngIf="!users.length">אין פניות שירות</p>
+    <input type="search" [(ngModel)]="searchVal" placeholder="חיפוש" />
+
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    <i (click)="sort(false,1)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,1)" class="fa fa-caret-square-o-down"></i> ID
+                </th>
+                <th>
+                    <i (click)="sort(false,2)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,2)" class="fa fa-caret-square-o-down"></i> שם משתמש
+                </th>
+                <th>
+                    <i (click)="sort(false,3)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,3)" class="fa fa-caret-square-o-down"></i>סיסמה
+                </th>
+                <th>
+                    <i (click)="sort(false,4)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,4)" class="fa fa-caret-square-o-down"></i>מייל
+                </th>
+                <th>
+                    <i (click)="sort(false,5)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,5)" class="fa fa-caret-square-o-down"></i> מנהל
+                </th>
+                <th>
+                    <i (click)="sort(false,6)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,6)" class="fa fa-caret-square-o-down"></i>מחובר
+                </th>
+                <th></th>
+            </tr>
+        </thead>
+
+        <tbody>
+            <tr *ngFor="let u of users | search: searchVal; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>
+                    <input [(ngModel)]="u.id" type="text" *ngIf="u.isEditState" />
+                    <span *ngIf="!u.isEditState" (dblclick)="this.utility.alert(u.fullName)">
+                        {{ u.id }}
+                    </span>
+                </td>
+
+                <td>
+                    <input [(ngModel)]="u.fullName" type="text" *ngIf="u.isEditState" />
+                    <span *ngIf="!u.isEditState" (dblclick)="this.utility.alert(u.fullName)">
+
+                        {{ u.fullName }}
+                    </span>
+                </td>
+
+                <td>
+                    <input [(ngModel)]="u.password" type="text" *ngIf="u.isEditState&&this.editPass" />
+                    <button class="btn btn-warning border  rounded-pill" *ngIf="u.isEditState"
+                        (click)="this.editPass=true"> לשינוי הסיסמא לחץ כאן</button>
+                    <span *ngIf="!u.isEditState" (dblclick)="this.utility.alert(u.password)">
+                        {{ u.password }}
+                    </span>
+                </td>
+                <td>
+                    <input [(ngModel)]="u.email" type="text" *ngIf="u.isEditState" />
+                    <span *ngIf="!u.isEditState" (dblclick)="this.utility.alert(u.email)">
+                        {{ u.email }}
+                    </span>
+                </td>
+                <td><input [(ngModel)]="u.managerPermission" type="checkbox" *ngIf="u.isEditState" />{{
+                    u.managerPermission }}</td>
+                <td>{{ u.isConnected }}</td>
+                <td>
+                    <i class="fa fa-edit" *ngIf="!u.isEditState" (click)="u.isEditState = true" title="עריכה"> </i>
+                    <i class="fa fa-check" *ngIf="u.isEditState" (click)="update(u)"></i>
+                    <i class="fa fa-close" *ngIf="u.isEditState" (click)="u.isEditState = false"></i>
+                    <i class="fa fa-trash" *ngIf="!u.isEditState" (click)="remove(u)"></i>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>

@@ -1,0 +1,61 @@
+.container {
+    table {
+        width: 100%;
+        border-collapse: collapse;
+
+        td {
+            white-space: nowrap;
+            max-width: 200px;
+            border: 1px solid #000000;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        input[type="search"] {
+            padding: 6px;
+            margin-bottom: 8px;
+        }
+
+        th {
+            background-color: #037d9b;
+            color: white;
+            text-align: center;
+        }
+
+        tr {
+            height: 120px;
+        }
+
+        th,
+        td {
+            padding: 6px 8px;
+            width: 400px;
+            white-space: nowrap;
+        }
+
+        td {
+            text-align: center;
+        }
+
+        i {
+            font-size: 1.5em;
+            padding: 3px;
+        }
+
+        i:hover {
+            color: rgb(22, 202, 22);
+        }
+
+        i:active {
+            color: green;
+        }
+    }
+}
+
+
+
+@media (max-width: 769px) {
+    .container {
+    overflow-x: scroll;
+    }
+  }

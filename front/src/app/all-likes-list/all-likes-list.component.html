@@ -1,0 +1,36 @@
+<div class="reviewList">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    <i (click)="sort(false,1)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,1)" class="fa fa-caret-square-o-down"></i> ID
+                </th>
+                <th>
+                    <i (click)="sort(false,2)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,2)" class="fa fa-caret-square-o-down"></i> ביקורת מספר:
+                </th>
+                <th>
+                    <i (click)="sort(false,3)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,3)" class="fa fa-caret-square-o-down"></i> מאת משתמש מספר:
+                </th>
+                <th>
+                    <i (click)="sort(false,4)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,4)" class="fa fa-caret-square-o-down"></i>נוצר בתאריך:
+                </th>
+                <th><input class='form-control2  left' type="search" [(ngModel)]="searchVal" placeholder="חיפוש" /></th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let l of likes | search: searchVal; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ l.id }}</td>
+                <td>{{ l.revId }}</td>
+                <td>{{ l.userId }}</td>
+                <td>{{ l.creatTime }}</td>
+                <td><i class="fa fa-trash" (click)="delete(l.id)"></i></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

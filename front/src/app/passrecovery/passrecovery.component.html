@@ -1,0 +1,18 @@
+<div class=" container">
+    <form class="frame"  [formGroup]="form">
+        <h2>שחזור סיסמא</h2>
+        <div class="field">
+            <label>אימייל:</label><input type="email" #userEmail formControlName="email" />
+            <span>*מינימום 3 אותיות
+                , חשוב שהמייל יהיה תקין וקיים במערכת
+            </span>
+        </div>
+
+        <div class="field">
+            <button  [disabled]="!form.valid" (click)="send()">שלח בקשה </button>
+        </div>
+    </form>
+
+
+
+</div>

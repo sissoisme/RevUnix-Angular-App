@@ -1,0 +1,18 @@
+<div class="alertFrame">
+    <form class="frame" [formGroup]="form"  id="that">
+        <h2>שחזור סיסמא</h2>
+        <div class="field">
+            <label>סיסמא</label><input type="password"  formControlName="password"/>
+            <span >*סיסמה חייבת להכיל לפחות 8 תווים , אות גדולה ואות קטנה 
+            </span>
+        </div>
+        <div class="field">
+            <label>אישור סיסמא</label><input type="password" formControlName="checkedPassword"/>
+            <span >הסיסמאות חייבות להיות זהות. </span>
+        </div>
+
+        <div class="field">
+            <button id="loginBtn"  [disabled]="!form.valid" (click)="send()">שמור סיסמא </button>
+        </div>
+    </form>
+</div>

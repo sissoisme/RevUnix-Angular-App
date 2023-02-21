@@ -1,0 +1,32 @@
+nav {
+  background: teal;
+  color: white;
+  border-top: 4px #ffffff56 solid ;
+  padding: 0;
+  a {
+    padding: 16px;
+    display: inline-block;
+    cursor: pointer;
+    color: white;
+    text-decoration: none;
+    text-shadow: 1px 1px 1px black;
+  }
+}
+a {
+  padding: 16px ;
+  display: inline-block;
+  cursor: pointer;
+  color: white;
+  text-decoration: none;
+  text-shadow: 1px 1px 1px black;
+}
+a:hover {
+  background-color: #ffffff56;
+}
+a.active {
+  background-color: #ffffff83;
+  border-top: 4px rgb(53, 9, 53) solid;
+}
+a[hidden] {
+  display: none;
+}

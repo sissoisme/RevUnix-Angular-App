@@ -1,0 +1,63 @@
+<!-- <nav class="navbar navbar-expand-lg navbar-light shadow-sm navComp">
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="navbar-nav">
+
+      <a
+      
+      *ngFor="let x of menu"
+      [class.active]="active == x.route"
+      [routerLink]="x.route"
+      [hidden]="x.isConnected && !utility.user">{{ x.title }} <i *ngIf="x.icon" class="fa fa-{{ x.icon }}"></i></a>
+      <a
+      [class.active]="active == '/support-manage/opened'"
+      *ngIf="this.utility.user?.managerPermission"
+      [routerLink]="'/support-manage/opened'">ניהול פניות פתוחות <i class="fa fa-plus-square"></i></a>
+      <a
+      [class.active]="active == '/support-manage/completed'"
+      *ngIf="this.utility.user?.managerPermission"
+      [routerLink]="'/support-manage/completed'">ניהול פניות סגורות <i class="fa fa-check-square"></i></a>
+      <a
+      [class.active]="active == 'user-manage'"
+      *ngIf="this.utility.user?.admin"
+      [routerLink]="'user-manage'">  ניהול משתמשים <i class="	fa fa-group"></i></a>
+      
+    </div>
+  </div>
+</nav> -->
+
+
+
+
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container-fluid">
+    
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+      <div class="navbar-nav">
+        <a
+      
+      *ngFor="let x of menu"
+      [class.active]="active == x.route"
+      [routerLink]="x.route"
+      [hidden]="x.isConnected && !utility.user">{{ x.title }} <i *ngIf="x.icon" class="fa fa-{{ x.icon }}"></i></a>
+      <a
+      [class.active]="active == '/support-manage/opened'"
+      *ngIf="this.utility.user?.managerPermission"
+      [routerLink]="'/support-manage/opened'">ניהול פניות פתוחות <i class="fa fa-plus-square"></i></a>
+      <a
+      [class.active]="active == '/support-manage/completed'"
+      *ngIf="this.utility.user?.managerPermission"
+      [routerLink]="'/support-manage/completed'">ניהול פניות סגורות <i class="fa fa-check-square"></i></a>
+      <a
+      [class.active]="active == 'user-manage'"
+      *ngIf="this.utility.user?.admin"
+      [routerLink]="'user-manage'">  ניהול משתמשים <i class="	fa fa-group"></i></a>
+      </div>
+    </div>
+  </div>
+</nav>

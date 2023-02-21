@@ -1,0 +1,17 @@
+.logoFrame{width: 200px;
+    height: 200px;
+    position: absolute;
+    top:5px;
+    left:0;
+    img{
+        width: 160px;height: 90px;
+        border: 1px solid  black;
+        background-color: none;
+    }
+
+}
+@media (max-width: 550px) {
+    .logoFrame {
+  display: none;
+    }
+  }

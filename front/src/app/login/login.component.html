@@ -1,0 +1,24 @@
+<form class="frame"  [formGroup]="form" >
+    <h2>התחבר</h2>
+    <div class="field">
+        <label >אימייל:</label><input type="email" formControlName="email"  />
+        <span>*מינימום 3 אותיות</span>
+    </div>
+    <div class="field">
+        <label>סיסמה:</label><input type="password" formControlName="password" />
+        <span >*סיסמה חייבת להכיל לפחות 8 תווים , אות גדולה ואות קטנה 
+        </span>
+    </div>
+    <div class="field">
+        <button (click)="send()" [disabled]="!form.valid">התחבר</button>
+    </div>
+  <hr>
+        <p>עוד אין לך משתמש ? <button class="btn btn-primary " type="button" routerLink="../register"> הרשם
+    עכשיו</button></p>
+<p>שכחת את הסיסמא ? <span class="blueLink" routerLink="../passrec">לחץ כאן</span></p>
+   
+</form>
+
+
+
+

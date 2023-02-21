@@ -1,0 +1,49 @@
+
+
+
+
+<div class="container">
+    <div class="reviewHeader">
+        <h1  *ngIf="!showAddOns" >הביקורות שלי</h1>
+        <h1  *ngIf="showAddOns" >כל הביקורות </h1>
+        
+    </div>
+    <app-review-manage></app-review-manage>
+    
+</div>
+
+<div *ngIf="!showAddOns" class="container">
+    <div class="reviewHeader">
+        
+        <h1>המועדפים שלי</h1>
+    </div>
+    <app-favourites-rev></app-favourites-rev>
+    
+</div>
+
+<div class="container">
+    <div class="reviewHeader">
+        
+        <h1  *ngIf="!showAddOns" >התגובות שלי</h1>
+        <h1  *ngIf="showAddOns" >כל התגובות </h1>
+    </div>
+    <app-manag-comments></app-manag-comments>
+</div>
+
+<div  *ngIf="showAddOns"  class="container">
+    <div class="reviewHeader">
+        <h1> כל הלייקים</h1>
+    </div>
+    <app-likelist></app-likelist>
+</div>
+<div  *ngIf="showAddOns"  class="container">
+    <div class="reviewHeader">
+        
+        <h1>המועדפים שלי</h1>
+    </div>
+    <app-favourites-rev></app-favourites-rev>
+</div>
+
+
+
+

@@ -1,0 +1,54 @@
+
+<div class="reviewList" >
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>
+                    <i (click)="sort(false,1)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,1)" class="fa fa-caret-square-o-down"></i> ID
+                </th>
+                <th>
+                    <i (click)="sort(false,2)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,2)" class="fa fa-caret-square-o-down"></i> שם:
+                </th>
+                <th>
+                    <i (click)="sort(false,3)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,3)" class="fa fa-caret-square-o-down"></i> כותרת:
+                </th>
+                <th>
+                    <i (click)="sort(false,4)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,4)" class="fa fa-caret-square-o-down"></i> נושא:
+                </th>
+                <th>
+                    <i (click)="sort(false,5)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,5)" class="fa fa-caret-square-o-down"></i> קטגוריה:
+                </th>
+                <th>
+                    <i (click)="sort(false,6)" class="fa fa-caret-square-o-up"></i>
+                    <i (click)="sort(true,6)" class="fa fa-caret-square-o-down"></i> דירוג:
+                </th>
+               <th>
+                <input class='form-control2  left' type="search" [(ngModel)]="searchVal" placeholder="חיפוש" *ngIf="showAddOns"  />
+            </th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let r of  reviews | search: searchVal; let i = index   " (click)="displayInBox(r)">
+             
+                
+                <td>{{ i + 1 }}</td>
+                
+                
+                <td >{{ r.id }}</td>
+                <td  (dblclick)="this.utility.alert(r.title)" >{{ r.title }}</td>
+                <td  (dblclick)="this.utility.alert(r.subTitle)" >{{ r.subTitle }}</td>
+                <td >{{ r.topic }}</td>
+                <td >{{ r.category }}</td>
+                <td >{{ r.rate }}</td>
+                <td >      <i (click)="delete(r.id)" class="fa fa-trash" ></i></td>
+                
+            </tr >
+        </tbody>
+    </table>
+</div>

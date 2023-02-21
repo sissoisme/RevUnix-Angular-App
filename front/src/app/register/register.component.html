@@ -1,0 +1,18 @@
+<form class="frame"  [formGroup]="form">
+    <h2>יצירת משתמש</h2>
+    <div class="field">
+        <label>שם מלא:</label><input type="text" formControlName="fullName"  />
+        <span>*מינימום 3 אותיות</span>
+    </div>
+    <div class="field">
+        <label>אימייל:</label><input type="email" formControlName="email"/>
+        <span>*הכנס אימייל פעיל לצורך שחזור שחזור סיסמא עתידי</span>
+    </div>
+    <div class="field">
+        <label>סיסמה:</label><input type="password" formControlName="password" />
+        <span>*סיסמה חייבת להכיל אות גדולה ואות קטנה ,מינימום 8 ספרות </span>
+    </div>
+    <div class="field">
+        <button (click)="send()" [disabled]="!form.valid">צור</button>
+    </div>
+</form>

@@ -1,0 +1,92 @@
+<div class="alertFrame" *ngIf="utility.isBoxActived">
+    <div class="displayBox">
+        <header>
+            <button class="close" (click)="utility.isBoxActived = false">X</button>
+            <h1 [class.yellow]="this.utility.BoxContent.topic == 'Movies'" [class.green]="this.utility.BoxContent.topic == 'Books'"
+            [class.lightBlue]="this.utility.BoxContent.topic == 'TV Show / Series'" class="card-header">
+                {{ this.utility.BoxContent.topic }}
+            </h1>
+        </header>
+
+        <div class="upSide">
+            <div class="imgFrame">
+                <img  *ngIf="utility.BoxContent.imgFile && utility.BoxContent.imgUrl" src="{{ this.utility.BoxContent.imgFile }}" alt=""    onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                <img  *ngIf="utility.BoxContent.imgFile && !utility.BoxContent.imgUrl" src="{{ this.utility.BoxContent.imgFile }}" alt=""     onerror="src='../../assets/imgs/defualtImg.jpg'"/>
+                <img  *ngIf="!utility.BoxContent.imgFile && utility.BoxContent.imgUrl" src="{{ this.utility.BoxContent.imgUrl }}" alt=""    onerror="src='../../assets/imgs/defualtImg.jpg'" />
+                <img  *ngIf="!utility.BoxContent.imgFile && !utility.BoxContent.imgUrl" src="../../assets/imgs/defualtImg.jpg" alt=""    onerror="src='../../assets/imgs/defualtImg.jpg'" />
+             
+            </div>
+            <div class="contentSide">
+                <div class="contentSide-upper">
+                    <div class="contentHead">
+                        <img src="../../assets/imgs//category/{{this.utility.BoxContent.category}}.png" alt="">
+                        <div class="content lg">
+                            <h3 *ngIf="this.utility.BoxContent.topic == 'Movies'">שם הסרט:</h3>
+                            <h3 *ngIf="this.utility.BoxContent.topic == 'TV Show / Series'" style="font-size: 16px;" > שם הסדרה\תוכנית:</h3>
+                            <h3 *ngIf="this.utility.BoxContent.topic == 'Books'">שם הספר:</h3>
+                            <p>{{ this.utility.BoxContent.title }}</p> <span class="year">/{{this.utility.BoxContent.releaseYear}}/</span>
+                        </div>
+
+                        <div class="content lg">
+                            <h3>דרוג:</h3>
+                            <p>{{ this.utility.BoxContent.rate }}</p>
+                        </div>
+
+                        <div class="content lg" *ngIf="this.utility.BoxContent.topic == 'Movies'">
+                            <h3 >אורך:</h3>
+                            <p>{{ this.utility.BoxContent.length }} דק'</p>
+                        </div>
+                        <div class="content lg">
+                            <h3 >תגיות:</h3>
+                            <p id="tags">{{ this.utility.BoxContent.tags }}</p>
+                        </div>
+                        <div class="others">
+                            <div *ngIf="this.utility.BoxContent.bookPublisher" class="content smallTxt"> <span>הוצאת:</span>
+                                <p> {{ this.utility.BoxContent.bookPublisher }}</p>
+                            </div>
+                            <div *ngIf="this.utility.BoxContent.bookPages" class="content smallTxt"> <span>עמודים:</span>
+                                <p> {{ this.utility.BoxContent.bookPages }}</p>
+                            </div>
+                            <div *ngIf="this.utility.BoxContent.bookAuthor" class="content smallTxt"><span>כותב:</span>
+                                <p> {{ this.utility.BoxContent.bookAuthor }}</p>
+                            </div>
+                            <div class="content lg2" *ngIf="this.utility.BoxContent.topic == 'TV Show / Series'">
+                                <span >אורך:</span>
+                                <p> {{ this.utility.BoxContent.length }} דק'</p>
+                            </div>
+                            <div *ngIf="this.utility.BoxContent.tvEpisode" class="content smallTxt"><span>פרק:</span>
+                                <p> {{ this.utility.BoxContent.tvEpisode }}</p>
+                            </div>
+                            <div *ngIf="this.utility.BoxContent.tvSeries" class="content smallTxt"><span>עונה:</span>
+                                <p>
+                                    {{ this.utility.BoxContent.tvSeries }}</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="contentSide-bottom">
+                    <div class="content">
+                        <h3>כותרת:</h3>
+                        <strong>
+
+                            <p> {{ this.utility.BoxContent.subTitle }}</p>
+                        </strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="underSide">
+            <div class="content contentBody">
+                <p>{{ this.utility.BoxContent.body }}</p>
+            </div>
+            <div class="bottomRow">
+                <div class="content"><span>ביקורת מספר: </span>{{ this.utility.BoxContent.id }}</div>
+                <div class="content"><span>מאת: </span>{{ this.utility.BoxContent.author }}</div>
+                <div class="content"><span>פורסם בתאריך: </span>{{ this.utility.BoxContent.publishedTime }}</div>
+            </div>
+        </div>
+
+    </div>
+</div>
